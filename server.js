@@ -1,11 +1,20 @@
 var express = require('express');
 var app = express();
 
+var path = require('path');
+
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
 }); 
 
 // create routes for admin section
+var Router = express.Router();
+
+Router.get('/', function(req, res) {
+	res.send(__dirname + '/index.html');
+});
+
+app.use('/', Router);
 
 var adminRouter = express.Router();
 
